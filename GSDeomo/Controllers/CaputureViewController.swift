@@ -13,8 +13,6 @@ import CoreData
 class CaptureViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     
-    var contentArray = [Content]()
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // スタートボタン.
@@ -139,8 +137,6 @@ class CaptureViewController: UIViewController, AVCaptureFileOutputRecordingDeleg
             let newContent = Content(context: self.context)
             newContent.date = Date()
             newContent.memo = "サンプルメモ"
-            //        self.contentArray.append(newContent)
-            self.contentArray.insert(newContent, at: 0)
             self.saveContents()
             
             self.dismiss(animated: true, completion: nil)
@@ -157,7 +153,9 @@ class CaptureViewController: UIViewController, AVCaptureFileOutputRecordingDeleg
         let assetsLib = ALAssetsLibrary()
         
         //動画のパスから動画をフォトライブラリに保存する.
-        assetsLib.writeVideoAtPath(toSavedPhotosAlbum: outputFileURL, completionBlock: nil)    }
+        assetsLib.writeVideoAtPath(toSavedPhotosAlbum: outputFileURL, completionBlock: nil)
+        
+    }
     
     
     //MARK: - Model Manupulation Method

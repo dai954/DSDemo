@@ -26,7 +26,19 @@ class ViewController: UIViewController {
         
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        print("!!!!!!!!!!!!")
+        print(paths)
+        print("!!!!!!!!!!!!")
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        print("!!!!!!!!!!!!")
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        let paths2 = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        print(paths2[0])
+        print()
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+         print(urls[urls.count-1] as URL)
+        
         
     }
     
@@ -38,13 +50,13 @@ class ViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
-//        let newContent = Content(context: self.context)
-//        newContent.date = Date()
-//        newContent.memo = "サンプルメモ"
-//        //        self.contentArray.append(newContent)
-//                self.contentArray.insert(newContent, at: 0)
-//        self.saveContents()
-
+        //        let newContent = Content(context: self.context)
+        //        newContent.date = Date()
+        //        newContent.memo = "サンプルメモ"
+        //        //        self.contentArray.append(newContent)
+        //                self.contentArray.insert(newContent, at: 0)
+        //        self.saveContents()
+        
         tableView.reloadData()
         
         self.performSegue(withIdentifier: "captureVideo", sender: self)
@@ -61,15 +73,6 @@ class ViewController: UIViewController {
             print("Error fetching data from context \(error) ")
         }
     }
-    
-    func saveContents() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
-    }
-    
     
 }
 
