@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         print("Git test")
+        print("Git test1")
         loadContent()
         
         tableView.delegate = self
